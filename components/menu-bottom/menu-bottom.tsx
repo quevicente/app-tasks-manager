@@ -10,7 +10,7 @@ export class MenuBottom extends Component<any, any> {
             <Icon name='menu' color="#aaa" />
           </TouchableOpacity>
           <TouchableOpacity onPress={this.props.newTask} style={styles.newTask} >
-            <Text style={styles.textButtonNewTask}> Nova Tarefa </Text>
+            <Icon name='add' color='white' size={34} style={styles.iconButton}/>
           </TouchableOpacity>
           <TouchableOpacity>
             <Icon name='more-vert' color="#aaa" />
@@ -31,15 +31,16 @@ const styles = StyleSheet.create({
     borderTopColor: '#feee'
   },
   newTask: { 
-    width: 200,
+    width: 60,
     height: 60,
-    marginTop: -30, 
+    marginTop: -60, 
     backgroundColor: '#5e8ded',
     borderRadius: 100,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    elevation: 8
   },
-  textButtonNewTask: { 
+  iconButton: { 
     color: '#ffff'
   }
 });
