@@ -12,7 +12,7 @@ export class EditTask extends Component<any, Props> {
   
   render() {
     return (
-      <Modal 
+      <Modal
         transparent
         animationType='slide'
         visible={this.props.visible}
@@ -22,10 +22,19 @@ export class EditTask extends Component<any, Props> {
           <View style={styles.body} onTouchStart={this.props.onClose}></View>
           <View style={styles.wrapper}>
             <TextInput
-              placeholder='Nova Tarefa...'
+              style= { styles.input }
+              value= { this.props.valueTitle }
+              onChangeText= { this.props.onChangeTitle }
+              placeholder='Nova Tarefa'
               multiline
               autoFocus
-              style= { styles.input }
+            />
+            <TextInput
+              style= { styles.inputDetails }
+              value= { this.props.valueDetails }
+              onChangeText= { this.props.onChangeDetails }
+              placeholder='Adicionar Detalhes'
+              multiline
             />
             <View style={styles.footer}>
               <View style={styles.leftIcons}>
@@ -84,7 +93,6 @@ const styles = StyleSheet.create({
   leftIcons:{
     flex: 1,
     flexDirection: 'row',
-    padding: 10
     
   },
   rightIcons:{
@@ -104,5 +112,8 @@ const styles = StyleSheet.create({
   input:{
     fontSize: 16,
     fontWeight: "500"
+  },
+  inputDetails:{
+    color: 'grey'
   }
 });
