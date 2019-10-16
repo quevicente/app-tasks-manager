@@ -10,7 +10,7 @@ import { TaskView } from './task/task.view';
 
 export class Main extends Component<any> {
   state = {
-    modalVisible: false
+    modalVisible: true
   }
   
   handleOpenModal = () => this.setState({ modalVisible: true })
