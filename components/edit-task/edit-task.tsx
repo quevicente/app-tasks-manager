@@ -4,8 +4,13 @@ import { StyleSheet, Text, View, Modal, TouchableOpacity, TextInput } from 'reac
 import { Input, Icon } from 'react-native-elements'
 
 type Props = {
+  onSave: Function
   visible: boolean
   onClose: Function
+  valueTitle: String
+  valueDetails: String
+  onChangeTitle: Function
+  onChangeDetails: Function
 }
 
 export class EditTask extends Component<any, Props> {
@@ -51,7 +56,7 @@ export class EditTask extends Component<any, Props> {
                 </TouchableOpacity>
               </View>
               
-              <TouchableOpacity style={styles.rightIcons}>
+              <TouchableOpacity onPress={this.props.onSave} style={styles.rightIcons}>
                 <Text style={styles.saveText}>Salvar</Text>
               </TouchableOpacity>
             </View>
@@ -69,13 +74,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     height: '100%',
     width: '100%',
-    backgroundColor:'rgba(0,0,0,0.4)'
-      
   },
   body:{
     width:'100%',
     height: '100%',
-    
+    backgroundColor:'rgba(0,0,0,0.4)'
   },
   wrapper: {
     backgroundColor: 'white',

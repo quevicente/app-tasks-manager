@@ -25,12 +25,13 @@ export class Main extends Component<any> {
   handleNewTask = {
     onChangeTitle: text => {
       this.setState({ newTask: {...this.state.newTask, title: text}})
-      console.log(text)
     },
     onChangeDetails: text => {
       this.setState({ newTask: {...this.state.newTask, details: text}})
-      console.log(this.state.newTask)
     },
+    onSaveNewTask: e => {
+      console.log('salvou')
+    }
   }
 
 
@@ -47,6 +48,7 @@ export class Main extends Component<any> {
           //actions new task
           onChangeTitle={this.handleNewTask.onChangeTitle} 
           onChangeDetails={this.handleNewTask.onChangeDetails} 
+          onSave={this.handleNewTask.onSaveNewTask}
         />
         <MenuBottom newTask={this.handleOpenModal} />
       </SafeAreaView>
