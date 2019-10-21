@@ -1,25 +1,26 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "app_tasks_manager_rncli",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
   },
   "dependencies": {
-    "expo": "^35.0.0",
     "react": "16.8.3",
-    "react-dom": "16.8.3",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
-    "react-native-elements": "^1.2.3",
-    "react-native-web": "^0.11.7"
+    "react-native": "0.59.0",
+    "react-native-elements": "^1.2.6",
+    "react-native-vector-icons": "^6.6.0"
   },
   "devDependencies": {
-    "@types/react": "^16.8.23",
-    "@types/react-native": "^0.57.65",
-    "babel-preset-expo": "^7.0.0",
-    "typescript": "^3.4.5"
+    "@babel/core": "^7.6.4",
+    "@babel/runtime": "^7.6.3",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.56.0",
+    "react-test-renderer": "16.8.3"
   },
-  "private": true
+  "jest": {
+    "preset": "react-native"
+  }
 }
