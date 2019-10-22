@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View, Modal, TouchableOpacity, TextInput } from 'react-native';
 
 import { Input, Icon } from 'react-native-elements'
@@ -7,8 +7,8 @@ export const EditTask = ({
   onSave = Function,
   visible = boolean,
   onClose = Function,
-  // valueTitle = String,
-  // valueDetails = String,
+  valueTitle = String,
+  valueDetails = String,
   onChangeTitle = Function,
   onChangeDetails = Function,
 }) => {
@@ -25,7 +25,7 @@ export const EditTask = ({
         <View style={styles.wrapper}>
           <TextInput
             style= { styles.input }
-            value='teste'
+            value= { valueTitle }
             onChangeText= { onChangeTitle }
             placeholder='Nova Tarefa'
             multiline
@@ -33,11 +33,11 @@ export const EditTask = ({
           />
           <TextInput
             style= { styles.inputDetails }
-            value='teste'
+            value= { valueDetails }
             onChangeText= { onChangeDetails }
             placeholder='Adicionar Detalhes'
             multiline
-        />
+          />
           <View style={styles.footer}>
             <View style={styles.leftIcons}>
               <TouchableOpacity>

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
 
-export const MenuBottom = ({newTask, moreDetails}) =>  {
+export const MenuBottom = ({newTask}) =>  {
   return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={moreDetails}>
+        <TouchableOpacity>
           <Icon name='menu' color="#aaa" />
         </TouchableOpacity>
         <TouchableOpacity onPress={newTask} style={styles.newTask} >
