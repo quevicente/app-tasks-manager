@@ -1,44 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  Text
-} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, SafeAreaView } from 'react-native';
 
 import { MenuBottom, EditTask, ModalDetails } from '../components'
 
 import { TaskView } from './task/task.view';
 
-export const Main = () => {
-  const [tasks, setTasks] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
-  const [modalDetailsVisible, setModaDetailslVisible] = useState(false);
+export class Main extends Component {
+  state = {
+    tasks: [],
+    modalVisible: false,
+    modalDetailsVisible: false,
+  }
 
   //open/close modal new task
-  const handleOpenModal = () => setModalVisible(true)
-  const handleCloseModal = () => setModalVisible(false)
+  handleOpenModal = () => this.setState({ modalVisible: true })
+  handleCloseModal = () => this.setState({ modalVisible: false })
 
   //open/close modal modalDetails
-  const handleOpenModalDetails = () => setModaDetailslVisible(true)
-  const handleCloseModalDetails = () => setModaDetailslVisible(false)
+  handleOpenModalDetails = () => setState({ modalDetailsVisible: true })
+  handleCloseModalDetails = () => setState({ modalDetailsVisible: false })
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <TaskView data={tasks} />
-
-      <EditTask
-        visible={modalVisible}
-        onClose={handleCloseModal}
-      />
-
-      <ModalDetails
-        visible={modalDetailsVisible}
-        onClose={handleCloseModalDetails}
-      />
-
-      <MenuBottom newTask={handleOpenModal} moreDetails={handleOpenModalDetails} />
-    </SafeAreaView >
-  )
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <TaskView data={this.tasks} />
+  
+        <EditTask
+          visible={this.state.modalVisible}
+          onClose={this.handleCloseModal}
+        />
+  
+        <ModalDetails
+          visible={this.modalDetailsVisible}
+          onClose={this.handleCloseModalDetails}
+        />
+  
+        <MenuBottom newTask={this.handleOpenModal} moreDetails={this.handleOpenModalDetails} />
+      </SafeAreaView >
+    )
+  }
 }
 
 const styles = StyleSheet.create({
