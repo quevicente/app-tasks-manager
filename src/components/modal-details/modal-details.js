@@ -1,39 +1,51 @@
-import React, { useState, useEffect } from 'react';
 import { StyleSheet, Modal, View, TouchableOpacity, Text } from 'react-native';
 import { Avatar } from 'react-native-elements'
 
 export const ModalDetails = ({ visible, onClose }) => {
     return (
-        <Modal
-            transparent
-            animationType='slide'
-            visible={visible}
-            onRequestClose={onClose}
-        >
+        <View >
+            <Modal
+                transparent
+                animationType='slide'
+                visible={visible}
+                onRequestClose={onClose}
+            >
 
-            <View style={styles.container}>
-                <View style={styles.body} onTouchStart={onClose}></View>
-            
-                <View style={styles.header}>
-                    <Avatar rounded title='V' />
+                <Modal
+                    transparent
+                    animationType='fade'
+                    visible={visible}
+                    onRequestClose={onClose}
+                >
 
-                    <View style={styles.userDetails}>
-                        <Text style={styles.userName}>Vicente Patricio</Text>
-                        <Text >vicente@vicente.com</Text>
+                    <View style={styles.container}>
+                        <View style={styles.body}></View>
+                    </View>
+                </Modal >   
+
+                <View style={styles.container}>
+
+                    <View style={styles.header}>
+                        <Avatar rounded title='V' />
+
+                        <View style={styles.userDetails}>
+                            <Text style={styles.userName}>Vicente Patricio</Text>
+                            <Text >vicente@vicente.com</Text>
+                        </View>
+                    </View>
+
+                    <View style={styles.content}>
+                        <TouchableOpacity style={styles.done} >
+                            <Text>Minhas tarefas</Text>
+                        </TouchableOpacity>
+                        <View style={styles.line}></View>
+                        <TouchableOpacity style={styles.createList}>
+                            <Text>Criar Lista</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
-
-                <View style={styles.content}>
-                    <TouchableOpacity style={styles.done} >
-                        <Text>Minhas tarefas</Text>
-                    </TouchableOpacity>
-                    <View style={styles.line}></View>
-                    <TouchableOpacity style={styles.createList}>
-                        <Text>Criar Lista</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-        </Modal >
+            </Modal >
+        </View>
     )
 }
 

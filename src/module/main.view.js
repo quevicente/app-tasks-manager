@@ -31,7 +31,7 @@ export class Main extends Component {
         />
   
         <ModalDetails
-          visible={this.modalDetailsVisible}
+          visible={this.state.modalDetailsVisible}
           onClose={this.handleCloseModalDetails}
         />
   

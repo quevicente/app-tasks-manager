@@ -26,7 +26,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fffd',
     borderTopWidth: 1,
-    borderTopColor: '#feee'
+    borderTopColor: '#feee',
+    marginLeft: 8,
+    marginRight: 8
   },
   newTask: {
     width: 60,

@@ -4,24 +4,26 @@ import { CheckBox } from 'react-native-elements';
 
 export class ListTask extends Component {
   state = {
-    checked
+    checked: false
   }
-  const [checked, setChecked] = useState(false)
 
-  const handleChecked = () => setChecked(!checked)
-  
-  return (
-    <TouchableOpacity onPress={handleChecked} style={styles.listItem} >
-      <CheckBox
-        checkedIcon='check'
-        uncheckedIcon='circle-o'
-        checked={checked}
-      />
-      <Text>{this.props.nome}</Text>
-    </TouchableOpacity>
-  )
+  handleChecked() {
+    this.setState({checked: !this.state.checked})
+  }
+
+  render() {
+    return (
+      <TouchableOpacity onPress={this.handleChecked} style={styles.listItem} >
+        <CheckBox
+          checkedIcon='check'
+          uncheckedIcon='circle-o'
+          checked={this.state.checked}
+        />
+        <Text>{this.props.nome}</Text>
+      </TouchableOpacity>
+    )
+  }
 }
-
 
 const styles = StyleSheet.create({
   listItem: {
