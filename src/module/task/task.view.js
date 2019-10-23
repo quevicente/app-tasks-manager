@@ -10,24 +10,22 @@ import {
 import { ListTask } from '../../components'
 import { tasks } from './mock'
 
-export const TaskView = ({
-  data
-}) => {  
-    
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        John's Tasks
-      </Text>
-      <FlatList 
-        data={tasks}
-        renderItem={({ item }) => <ListTask nome={item.nome} />}
-        keyExtractor={(item) => item._id}
-      />
-    </View>
-  )
+export class TaskView extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>
+          John's Tasks
+        </Text>
+        <FlatList 
+          data={tasks}
+          renderItem={({ item }) => <ListTask nome={item.nome} />}
+          keyExtractor={(item) => item._id}
+        />
+      </View>
+    )
+  }
 }
-
 
 const styles = StyleSheet.create({
   container: {

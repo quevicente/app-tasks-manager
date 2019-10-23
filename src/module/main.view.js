@@ -17,8 +17,8 @@ export class Main extends Component {
   handleCloseModal = () => this.setState({ modalVisible: false })
 
   //open/close modal modalDetails
-  handleOpenModalDetails = () => setState({ modalDetailsVisible: true })
-  handleCloseModalDetails = () => setState({ modalDetailsVisible: false })
+  handleOpenModalDetails = () => this.setState({ modalDetailsVisible: true })
+  handleCloseModalDetails = () => this.setState({ modalDetailsVisible: false })
 
   render() {
     return (
