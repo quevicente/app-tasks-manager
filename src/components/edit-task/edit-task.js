@@ -6,10 +6,8 @@ import { Input, Icon } from 'react-native-elements'
 export class EditTask extends Component {
   state = {
     task:{
-      _id: '',
       nome: '',
       descricao: '',
-      status: 'aberto',
     }
   } 
 
