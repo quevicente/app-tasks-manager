@@ -20,15 +20,18 @@ export class Main extends Component {
   handleOpenModalDetails = () => this.setState({ modalDetailsVisible: true })
   handleCloseModalDetails = () => this.setState({ modalDetailsVisible: false })
 
+  //new tasks
+  handleSaveTask = task => this.setState({tasks:[...this.state.tasks, task] })
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <TaskView data={this.tasks} />
+        <TaskView data={this.state.tasks} />
   
         <NewTask
           visible={this.state.modalVisible}
           onClose={this.handleCloseModal}
-          onSave = { (e) => console.log(e) }
+          onSave = { this.handleSaveTask }
         />
   
         <ModalDetails

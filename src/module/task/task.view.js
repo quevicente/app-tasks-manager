@@ -20,7 +20,7 @@ export const TaskView = ({
         John's Tasks
       </Text>
       <FlatList 
-        data={tasks}
+        data={data}
         renderItem={({ item }) => <ListTask nome={item.nome} />}
         keyExtractor={(item) => item._id}
       />
