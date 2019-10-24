@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Modal, TouchableOpacity, TextInput } from 'reac
 
 import { Input, Icon } from 'react-native-elements'
 
-export class EditTask extends Component {
+export class NewTask extends Component {
   state = {
     task:{
       nome: '',

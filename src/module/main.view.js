@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
 
-import { MenuBottom, EditTask, ModalDetails } from '../components'
+import { MenuBottom, NewTask, ModalDetails } from '../components'
 
 import { TaskView } from './task/task.view';
 
@@ -25,7 +25,7 @@ export class Main extends Component {
       <SafeAreaView style={styles.container}>
         <TaskView data={this.tasks} />
   
-        <EditTask
+        <NewTask
           visible={this.state.modalVisible}
           onClose={this.handleCloseModal}
           onSave = { (e) => console.log(e) }
