@@ -23,6 +23,7 @@ export class Main extends Component {
   //new tasks
   handleSaveTask = task => this.setState({tasks:[...this.state.tasks, task] })
 
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
