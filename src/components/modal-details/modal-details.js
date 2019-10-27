@@ -1,3 +1,4 @@
+import React, { Component } from 'react'
 import { StyleSheet, Modal, View, TouchableOpacity, Text } from 'react-native';
 import { Avatar } from 'react-native-elements'
 
@@ -21,7 +22,7 @@ export const ModalDetails = ({ visible, onClose }) => {
                     <View style={styles.container}>
                         <View style={styles.body}></View>
                     </View>
-                </Modal >   
+                </Modal >
 
                 <View style={styles.container}>
 
