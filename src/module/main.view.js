@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
 
-import { MenuBottom, EditTask, ModalDetails } from '../components'
+import { MenuBottom, NewTask, ModalDetails } from '../components'
 
 import { TaskView } from './task/task.view';
 
@@ -20,14 +20,19 @@ export class Main extends Component {
   handleOpenModalDetails = () => this.setState({ modalDetailsVisible: true })
   handleCloseModalDetails = () => this.setState({ modalDetailsVisible: false })
 
+  //new tasks
+  handleSaveTask = task => this.setState({tasks:[...this.state.tasks, task] })
+
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <TaskView data={this.tasks} />
+        <TaskView data={this.state.tasks} />
   
-        <EditTask
+        <NewTask
           visible={this.state.modalVisible}
           onClose={this.handleCloseModal}
+          onSave = { this.handleSaveTask }
         />
   
         <ModalDetails
