@@ -26,6 +26,7 @@ export class Main extends Component {
     this.handleCloseModal()
   }
 
+
   render() {
     return (
       <SafeAreaView style={styles.container}>

@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 
-export const ListTask = ({nome}) => {
+export class ListTask extends Component {
+  state = {
+    checked
+  }
   const [checked, setChecked] = useState(false)
 
   const handleChecked = () => setChecked(!checked)
@@ -14,7 +17,7 @@ export const ListTask = ({nome}) => {
         uncheckedIcon='circle-o'
         checked={checked}
       />
-      <Text>{nome}</Text>
+      <Text>{this.props.nome}</Text>
     </TouchableOpacity>
   )
 }
