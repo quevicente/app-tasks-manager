@@ -21,7 +21,10 @@ export class Main extends Component {
   handleCloseModalDetails = () => this.setState({ modalDetailsVisible: false })
 
   //new tasks
-  handleSaveTask = task => this.setState({tasks:[...this.state.tasks, task] })
+  handleSaveTask = task =>{
+    this.setState({tasks:[...this.state.tasks, task] })
+    this.handleCloseModal()
+  }
 
   render() {
     return (
