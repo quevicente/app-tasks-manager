@@ -56,20 +56,26 @@ export class NewTask extends Component {
             />
             <View style={styles.footer}>
               <View style={styles.leftIcons}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => alert('À implementar')}> 
                   <Icon
                     name= 'bars' type='font-awesome' color="#5e8ded"
                   />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.calendarIcon}>
+                <TouchableOpacity style={styles.calendarIcon} onPress={() => alert('À implementar')}>
                   <Icon
                     name='calendar-check-o' type='font-awesome' color="#5e8ded" 
                   /> 
                 </TouchableOpacity>
               </View>
               
-              <TouchableOpacity onPress={() => onSave(task)} style={styles.rightIcons}>
+              <TouchableOpacity onPress={() =>{
+                  onSave(task)
+                  this.setState({task:{ 
+                    nome: '',
+                    descricao: '',
+                  }})
+                }} style={styles.rightIcons}>
                 <Text style={styles.saveText}>Salvar</Text>
               </TouchableOpacity>
             </View>
