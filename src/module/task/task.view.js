@@ -18,9 +18,9 @@ export class TaskView extends Component {
           John's Tasks
         </Text>
         <FlatList 
-          data={tasks}
-          renderItem={({ item }) => <ListTask nome={item.nome} />}
-          keyExtractor={(item) => item._id}
+          data={this.props.data}
+          renderItem={({ item }, index) => <ListTask key={index} nome={item.nome} />}
+          keyExtractor={(item) => item.nome}
         />
       </View>
     )

@@ -10,11 +10,11 @@ export class ListTask extends Component {
   handleChecked = () => this.setState({checked: !this.state.checked})
   render(){
     return (
-      <TouchableOpacity onPress={handleChecked} style={styles.listItem} >
+      <TouchableOpacity onPress={this.handleChecked} style={styles.listItem} >
         <CheckBox
           checkedIcon='check'
           uncheckedIcon='circle-o'
-          checked={checked}
+          checked={this.state.checked}
         />
         <Text>{this.props.nome}</Text>
       </TouchableOpacity>
