@@ -25,14 +25,13 @@ export class Main extends Component {
 
   //new tasks
   handleSaveTask = async task =>{
-    this.setState({tasks:[...this.state.tasks, task] })
+    this.setState({tasks:[...this.state.tasks, task]})
     this.handleCloseModal()
-    console.log(task)
 
-    console.log(createTask({
+    createTask({
       ...task,
       status: 'aberto'
-    }))
+    })
   }
 
   render() {
