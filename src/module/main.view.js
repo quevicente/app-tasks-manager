@@ -5,6 +5,9 @@ import { MenuBottom, NewTask, ModalDetails } from '../components'
 
 import { TaskView } from './task/task.view';
 
+//api
+import { getTasks } from '../services'
+
 export class Main extends Component {
   state = {
     tasks: [],
@@ -26,8 +29,26 @@ export class Main extends Component {
     this.handleCloseModal()
   }
 
-
   render() {
+    const loadTasks = async () => { 
+        const { data } = await getTasks()
+
+        const tasks =  [...data.filter(task => {
+          if(task.nome !== undefined && task.descricao !== undefined){
+            return{
+              id: task._id,
+              nome: task.nome,
+              descricao: task.descricao,
+              status: 'aberto',
+            }
+          }
+        })]
+
+        this.setState({ tasks: tasks })
+    }
+
+    loadTasks()
+    
     return (
       <SafeAreaView style={styles.container}>
         <TaskView data={this.state.tasks} />
