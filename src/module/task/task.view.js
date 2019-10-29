@@ -7,7 +7,7 @@ import {
   StatusBar,
 } from 'react-native';
 
-import { ListTask } from '../../components'
+import ListItem from './ListItem';
 import { tasks } from './mock'
 
 export const TaskView = ({
@@ -21,8 +21,12 @@ export const TaskView = ({
       </Text>
       <FlatList 
         data={tasks}
-        renderItem={({ item }) => <ListTask nome={item.nome} />}
         keyExtractor={(item) => item._id}
+        renderItem={({ item }) => (
+          <ListItem
+            {...item}
+          />
+        )}
       />
     </View>
   )

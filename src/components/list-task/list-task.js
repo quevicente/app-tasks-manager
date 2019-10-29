@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 
+
 export const ListTask = ({nome}) => {
   const [checked, setChecked] = useState(false)
 
