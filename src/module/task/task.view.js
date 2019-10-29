@@ -7,32 +7,33 @@ import {
   StatusBar,
 } from 'react-native';
 
-import ListItem from './ListItem';
+import { ListTask } from '../../components'
+
+import ListItem from './components/ListItem'
 import { tasks } from './mock'
 
-export const TaskView = ({
-  data
-}) => {  
-    
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        John's Tasks
-      </Text>
-      <FlatList 
-        data={tasks}
-        keyExtractor={(item) => item._id}
-        renderItem={({ item }) => (
-          <ListItem
-            {...item}
-          />
-        )}
-      />
-    </View>
-  )
+export class TaskView extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>
+          John's Tasks
+        </Text>
+        <FlatList 
+          data={this.props.data}
+          renderItem={({ item }, index) =>
+            <ListItem
+              key={index}
+              data={item}
+              onSwipeFromLeft= {() => this.props.handleSwipe(item._id)}
+            />
+          }
+          keyExtractor={(item) => item.nome}
+        />
+      </View>
+    )
+  }
 }
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

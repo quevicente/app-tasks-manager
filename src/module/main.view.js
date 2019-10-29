@@ -1,44 +1,96 @@
-import React, { useState, useEffect } from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  Text
-} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, SafeAreaView } from 'react-native';
 
-import { MenuBottom, EditTask, ModalDetails } from '../components'
+import { MenuBottom, NewTask, ModalDetails } from '../components'
 
 import { TaskView } from './task/task.view';
 
-export const Main = () => {
-  const [tasks, setTasks] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
-  const [modalDetailsVisible, setModaDetailslVisible] = useState(false);
+//api
+import { getTasks, createTask } from '../services'
+
+export class Main extends Component {
+  state = {
+    tasks: [],
+    completedTasks: [],
+    modalVisible: false,
+    modalDetailsVisible: false,
+  }
 
   //open/close modal new task
-  const handleOpenModal = () => setModalVisible(true)
-  const handleCloseModal = () => setModalVisible(false)
+  handleOpenModal = () => this.setState({ modalVisible: true })
+  handleCloseModal = () => this.setState({ modalVisible: false })
 
   //open/close modal modalDetails
-  const handleOpenModalDetails = () => setModaDetailslVisible(true)
-  const handleCloseModalDetails = () => setModaDetailslVisible(false)
+  handleOpenModalDetails = () => this.setState({ modalDetailsVisible: true })
+  handleCloseModalDetails = () => this.setState({ modalDetailsVisible: false })
+  //completed tasks
+  handleCompletedTasks = idTask => {
+    this.setState({ tasks: [
+      ...this.state.tasks.map(task => {
+        if(task._id === idTask){
+          return {
+            ...task,
+            nome: ''
+          };
+        }else{
+          return task
+        }
+      })
+    ]})
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <TaskView data={tasks} />
+    console.log(this.state.task)
+  }
 
-      <EditTask
-        visible={modalVisible}
-        onClose={handleCloseModal}
-      />
+  //new tasks
+  handleSaveTask = async task =>{
+    this.setState({tasks:[...this.state.tasks, task]})
+    this.handleCloseModal()
 
-      <ModalDetails
-        visible={modalDetailsVisible}
-        onClose={handleCloseModalDetails}
-      />
+    createTask({
+      ...task,
+      status: 'aberto'
+    })
+  }
 
-      <MenuBottom newTask={handleOpenModal} moreDetails={handleOpenModalDetails} />
-    </SafeAreaView >
-  )
+  render() {
+    const loadTasks = async () => { 
+        const { data } = await getTasks()
+
+        const tasks =  [...data.filter(task => {
+          if(task.nome !== undefined && task.descricao !== undefined){
+            return{
+              id: task._id,
+              nome: task.nome,
+              descricao: task.descricao,
+              status: 'aberto',
+            }
+          }
+        })]
+
+        this.setState({ tasks: tasks })
+    }
+
+    loadTasks()
+
+    return (
+      <SafeAreaView style={styles.container}>
+        <TaskView data={this.state.tasks} handleSwipe={this.handleCompletedTasks}/>
+  
+        <NewTask
+          visible={this.state.modalVisible}
+          onClose={this.handleCloseModal}
+          onSave = { this.handleSaveTask }
+        />
+  
+        <ModalDetails
+          visible={this.state.modalDetailsVisible}
+          onClose={this.handleCloseModalDetails}
+        />
+  
+        <MenuBottom newTask={this.handleOpenModal} moreDetails={this.handleOpenModalDetails} />
+      </SafeAreaView >
+    )
+  }
 }
 
 const styles = StyleSheet.create({
