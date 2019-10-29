@@ -6,7 +6,7 @@ import { MenuBottom, NewTask, ModalDetails } from '../components'
 import { TaskView } from './task/task.view';
 
 //api
-import { getTasks } from '../services'
+import { getTasks, createTask } from '../services'
 
 export class Main extends Component {
   state = {
@@ -24,9 +24,15 @@ export class Main extends Component {
   handleCloseModalDetails = () => this.setState({ modalDetailsVisible: false })
 
   //new tasks
-  handleSaveTask = task =>{
+  handleSaveTask = async task =>{
     this.setState({tasks:[...this.state.tasks, task] })
     this.handleCloseModal()
+    console.log(task)
+
+    console.log(createTask({
+      ...task,
+      status: 'aberto'
+    }))
   }
 
   render() {
@@ -48,7 +54,7 @@ export class Main extends Component {
     }
 
     loadTasks()
-    
+
     return (
       <SafeAreaView style={styles.container}>
         <TaskView data={this.state.tasks} />

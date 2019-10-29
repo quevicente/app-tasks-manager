@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-export const api = axios.create({
+const api = axios.create({
   baseURL: 'https://api-tasks-manager.herokuapp.com/'
 })
 
-export default request = (method, endpoint) =>{
-  return api[method](endpoint)
+export default request = (method, endpoint, data) =>{
+  return api[method](endpoint, data)
     .then(response => (response))
     .catch(({response}) => response)
 }
