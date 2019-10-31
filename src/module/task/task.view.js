@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 
 import { ListTask } from '../../components'
+
+import ListItem from './components/ListItem'
 import { tasks } from './mock'
 
 export class TaskView extends Component {
@@ -19,14 +21,19 @@ export class TaskView extends Component {
         </Text>
         <FlatList 
           data={this.props.data}
-          renderItem={({ item }, index) => <ListTask key={index} nome={item.nome} />}
+          renderItem={({ item }, index) =>
+            <ListItem
+              key={index}
+              data={item}
+              onSwipeFromLeft= {() => this.props.handleSwipe(item._id)}
+            />
+          }
           keyExtractor={(item) => item.nome}
         />
       </View>
     )
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

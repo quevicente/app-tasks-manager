@@ -11,6 +11,7 @@ import { getTasks, createTask } from '../services'
 export class Main extends Component {
   state = {
     tasks: [],
+    completedTasks: [],
     modalVisible: false,
     modalDetailsVisible: false,
   }
@@ -22,6 +23,23 @@ export class Main extends Component {
   //open/close modal modalDetails
   handleOpenModalDetails = () => this.setState({ modalDetailsVisible: true })
   handleCloseModalDetails = () => this.setState({ modalDetailsVisible: false })
+  //completed tasks
+  handleCompletedTasks = idTask => {
+    this.setState({ tasks: [
+      ...this.state.tasks.map(task => {
+        if(task._id === idTask){
+          return {
+            ...task,
+            nome: ''
+          };
+        }else{
+          return task
+        }
+      })
+    ]})
+
+    console.log(this.state.task)
+  }
 
   //new tasks
   handleSaveTask = async task =>{
@@ -56,7 +74,7 @@ export class Main extends Component {
 
     return (
       <SafeAreaView style={styles.container}>
-        <TaskView data={this.state.tasks} />
+        <TaskView data={this.state.tasks} handleSwipe={this.handleCompletedTasks}/>
   
         <NewTask
           visible={this.state.modalVisible}
