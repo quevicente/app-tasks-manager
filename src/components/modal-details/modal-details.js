@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { StyleSheet, Modal, View, TouchableOpacity, Text } from 'react-native';
 import { Avatar } from 'react-native-elements'
+import { getAllTasks } from '../../services/api'
 
 export const ModalDetails = ({ visible, onClose }) => {
+
     return (
         <View >
             <Modal
