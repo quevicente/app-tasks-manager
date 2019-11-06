@@ -7,17 +7,14 @@ import {
   StatusBar,
 } from 'react-native';
 
-import { ListTask } from '../../components'
-
 import ListItem from './components/ListItem'
-import { tasks } from './mock'
 
 export class TaskView extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
-          John's Tasks
+          {this.props.title}
         </Text>
         <FlatList 
           data={this.props.data}
@@ -28,7 +25,7 @@ export class TaskView extends Component {
               onSwipeFromLeft= {() => this.props.handleSwipe(item._id)}
             />
           }
-          keyExtractor={(item) => item.nome}
+          keyExtractor={(item) => item._id}
         />
       </View>
     )
